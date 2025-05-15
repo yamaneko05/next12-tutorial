@@ -1,29 +1,27 @@
-import { Controller, useForm } from 'react-hook-form'
-import { z } from 'zod'
+import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import {
-  Box,
-  Button,
-  FormControl,
-  FormHelperText,
-  TextField,
-} from '@mui/material'
+import { Box, Button } from '@mui/material'
 import Field from './Field'
-
-const schema = z.object({
-  title: z.string().max(3),
-  body: z.string(),
-})
+import { useMutation } from 'react-query'
+import { createPostSchema } from '../schemas'
+import { createPost } from '../api'
 
 export default function CreateForm() {
-  const { control, handleSubmit, formState } = useForm({
-    resolver: zodResolver(schema),
+  const { control, handleSubmit, reset } = useForm({
+    resolver: zodResolver(createPostSchema),
   })
 
-  const onSubmit = (data) => console.log(data)
+  const mutation = useMutation({
+    mutationFn: createPost,
+  })
+
+  const handleFormSubmit = handleSubmit(async (data) => {
+    mutation.mutate(data)
+    reset()
+  })
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleFormSubmit}>
       <Box sx={{ width: 360, pt: 1 }}>
         <Box>
           <Field control={control} name="title" label="タイトル" />

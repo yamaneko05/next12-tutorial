@@ -11,12 +11,7 @@ import {
   TableHead,
   TableRow,
 } from '@mui/material'
-
-async function getPosts() {
-  const res = await httpClient.get<Post[]>('/api/posts')
-
-  return res.data
-}
+import { getPosts } from '../api'
 
 export default function PostList() {
   const {
