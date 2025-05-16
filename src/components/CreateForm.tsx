@@ -5,19 +5,28 @@ import Field from './Field'
 import { useMutation } from 'react-query'
 import { createPostSchema } from '../schemas'
 import { createPost } from '../api'
+import { invalidatePosts } from '../utils/queryClient'
 
-export default function CreateForm() {
+export default function CreateForm({ onSuccess }: { onSuccess: () => void }) {
   const { control, handleSubmit, reset } = useForm({
     resolver: zodResolver(createPostSchema),
+    defaultValues: {
+      title: '',
+      body: '',
+    },
   })
 
   const mutation = useMutation({
     mutationFn: createPost,
+    onSuccess: () => {
+      onSuccess()
+      reset()
+      invalidatePosts()
+    },
   })
 
   const handleFormSubmit = handleSubmit(async (data) => {
     mutation.mutate(data)
-    reset()
   })
 
   return (

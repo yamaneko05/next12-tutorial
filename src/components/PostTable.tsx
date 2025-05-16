@@ -1,9 +1,4 @@
-import { useQuery } from 'react-query'
-import { httpClient } from '../utils/httpClient'
-import { Post } from '../types'
 import {
-  Backdrop,
-  CircularProgress,
   Table,
   TableBody,
   TableCell,
@@ -11,26 +6,9 @@ import {
   TableHead,
   TableRow,
 } from '@mui/material'
-import { getPosts } from '../api'
+import { Post } from '../types'
 
-export default function PostList() {
-  const {
-    isLoading,
-    error,
-    data: posts,
-  } = useQuery({
-    queryKey: ['postList'],
-    queryFn: getPosts,
-  })
-
-  if (isLoading)
-    return (
-      <Backdrop open>
-        <CircularProgress />
-      </Backdrop>
-    )
-  if (error) return 'error!'
-
+export default function PostTable({ posts }: { posts: Post[] }) {
   return (
     <TableContainer>
       <Table>

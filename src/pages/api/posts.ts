@@ -18,7 +18,7 @@ export default async function handler(
   if (req.method === 'GET') {
     const posts = await getPosts()
 
-    // await new Promise((resolve) => setTimeout(resolve, 2500))
+    await new Promise((resolve) => setTimeout(resolve, 1000))
 
     res.status(200).json(posts)
   } else if (req.method === 'POST') {

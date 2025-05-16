@@ -1,9 +1,8 @@
 import { appWithTranslation } from 'next-i18next'
 import { CssBaseline, ThemeProvider } from '@mui/material'
-import { QueryClientProvider, QueryClient } from 'react-query'
+import { QueryClientProvider } from 'react-query'
+import { queryClient } from '../utils/queryClient'
 import theme from '../theme'
-
-const queryClient = new QueryClient()
 
 function MyApp(props) {
   return (
