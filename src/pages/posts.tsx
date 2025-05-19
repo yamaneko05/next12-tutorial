@@ -9,6 +9,7 @@ import {
   Dialog,
   DialogContent,
   DialogTitle,
+  Typography,
 } from '@mui/material'
 import PostList from '../components/PostTable'
 import Layout from '../components/Layout'
@@ -66,12 +67,16 @@ export default function Page() {
   return (
     <>
       <Layout>
+        <Typography variant="h3" component="h1">
+          記事一覧
+        </Typography>
         <Box
           sx={{
             display: 'flex',
             flexDirection: 'row-reverse',
             alignItems: 'center',
             gap: 2,
+            mt: 2,
           }}
         >
           <Button onClick={handleDialogOpen} variant="contained">

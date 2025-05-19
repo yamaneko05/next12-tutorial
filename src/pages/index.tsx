@@ -1,6 +1,7 @@
 import { useTranslation } from 'next-i18next'
 import Layout from '../components/Layout'
 import {
+  Box,
   Button,
   Card,
   CardActions,
@@ -30,7 +31,7 @@ export default function Home() {
 
   return (
     <Layout>
-      <Typography variant="h2" component="h1">
+      <Typography variant="h3" component="h1">
         {t('hello')}
       </Typography>
       <Grid container spacing={2} sx={{ mt: 2 }}>
@@ -41,17 +42,20 @@ export default function Home() {
                 <Typography variant="h5" component="div">
                   {navLink.title}
                 </Typography>
-                <List dense>
-                  {navLink.dependencies.map((dependency) => (
-                    <ListItem key={dependency}>
-                      <ListItemText primary={dependency} />
-                    </ListItem>
-                  ))}
-                </List>
+                <Box sx={{ mt: 1 }}>
+                  <Typography variant="body2">{navLink.description}</Typography>
+                  <List dense>
+                    {navLink.dependencies.map((dependency) => (
+                      <ListItem key={dependency}>
+                        <ListItemText primary={dependency} />
+                      </ListItem>
+                    ))}
+                  </List>
+                </Box>
               </CardContent>
               <CardActions>
                 <Button component={Link} href={navLink.href}>
-                  visit
+                  {navLink.title}
                 </Button>
               </CardActions>
             </Card>
