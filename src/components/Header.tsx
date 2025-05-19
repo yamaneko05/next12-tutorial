@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
 import { Container } from '@mui/material'
 import Link from 'next/link'
+import { navLinks } from '../constants'
 
 export default function Header() {
   return (
@@ -13,14 +14,20 @@ export default function Header() {
       <AppBar position="static">
         <Toolbar component={Container}>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Next.js 12 チュートリアル
+            <Link href="/" style={{ color: 'inherit', textDecoration: 'none' }}>
+              Next.js 12 チュートリアル
+            </Link>
           </Typography>
-          <Button component={Link} href="/" color="inherit">
-            Home(react-query, react-hook-form)
-          </Button>
-          <Button component={Link} href="/chart" color="inherit">
-            Chart(chart.js)
-          </Button>
+          {navLinks.map((navLink) => (
+            <Button
+              key={navLink.href}
+              component={Link}
+              href={navLink.href}
+              color="inherit"
+            >
+              {navLink.title}
+            </Button>
+          ))}
         </Toolbar>
       </AppBar>
     </Box>
