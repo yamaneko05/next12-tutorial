@@ -9,4 +9,9 @@ export const navLinks = [
     title: '統計情報',
     dependencies: ['chartjs'],
   },
+  {
+    href: '/dnd',
+    title: '並び替え',
+    dependencies: ['dnd-kit'],
+  },
 ]
