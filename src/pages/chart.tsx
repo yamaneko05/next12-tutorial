@@ -22,7 +22,7 @@ export default function Page() {
     <>
       <Layout>
         <Typography variant="h3" component="h1">
-          {t('chart')}
+          {t('s&p500')}
         </Typography>
         <Box sx={{ mt: 2 }}>
           <Box>

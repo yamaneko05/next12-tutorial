@@ -1,5 +1,8 @@
 {
   "hello": "こんにちは",
   "create": "新規作成",
-  "chart": "統計情報"
+  "posts": "投稿一覧",
+  "s&p500": "S&P500",
+  "price": "基準価格",
+  "totalAssets": "総資産"
 }

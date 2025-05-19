@@ -1,5 +1,9 @@
 {
-  "hello": "hello",
-  "create": "create",
-  "chart": "chart"
+  "nextjs12tutorial": "Next.js 12 tutorial",
+  "hello": "Hello",
+  "create": "Create",
+  "posts": "Posts",
+  "s&p500": "S&P500",
+  "price": "Price",
+  "totalAssets": "Total assets"
 }

@@ -7,15 +7,18 @@ import Button from '@mui/material/Button'
 import { Container } from '@mui/material'
 import Link from 'next/link'
 import { navLinks } from '../constants'
+import { useTranslation } from 'next-i18next'
 
 export default function Header() {
+  const { t } = useTranslation()
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar component={Container}>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             <Link href="/" style={{ color: 'inherit', textDecoration: 'none' }}>
-              Next.js 12 チュートリアル
+              {t('nextjs12tutorial')}
             </Link>
           </Typography>
           {navLinks.map((navLink) => (
